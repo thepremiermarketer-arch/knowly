@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Calculate sale prices and savings with Knowly's free discount calculator.">
+<title>Free Discount Calculator | KNOWLY</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:#f1f5f9;font-family:Arial,sans-serif}
+header{padding:22px 8%;border-bottom:1px solid #263449}
+header a,.back{color:#38bdf8;text-decoration:none}
+header a{font-size:25px;font-weight:bold}
+main{max-width:700px;margin:60px auto;padding:25px}
+.card{background:#172337;padding:30px;border-radius:16px;border:1px solid #304158}
+h1{font-size:32px}
+p{color:#bdc9d8;line-height:1.6}
+label{display:block;margin:20px 0 8px}
+input{width:100%;padding:14px;border-radius:8px;border:1px solid #52647a;background:#0b1220;color:white;font-size:17px}
+button{margin-top:22px;width:100%;padding:15px;background:#0284c7;color:white;border:0;border-radius:8px;font-size:17px;cursor:pointer}
+#result{margin-top:22px;padding:18px;background:#0b3045;border-radius:8px;line-height:1.8}
+footer{text-align:center;padding:25px;color:#94a3b8}
+</style>
+</head>
+<body>
+<header><a href="../index.html">KNOWLY</a></header>
+<main>
+<a class="back" href="../index.html">← Back to Home</a>
+<h1>Free Discount Calculator</h1>
+<p>Calculate the final price after a discount and see how much money you save.</p>
+<div class="card">
+<label for="price">Original Price</label>
+<input type="number" id="price" min="0" step="any" placeholder="e.g. 100">
+<label for="discount">Discount Percentage (%)</label>
+<input type="number" id="discount" min="0" max="100" step="any" placeholder="e.g. 20">
+<button onclick="calculateDiscount()">Calculate Discount</button>
+<div id="result" aria-live="polite">Your result will appear here.</div>
+</div>
+</main>
+<footer>© 2026 KNOWLY. Discover More. Do More. Know More.</footer>
+<script>
+function calculateDiscount(){
+ const priceInput=document.getElementById("price").value;
+ const discountInput=document.getElementById("discount").value;
+ const result=document.getElementById("result");
+
+ if(priceInput.trim()===""||discountInput.trim()===""){
+  result.textContent="Please enter both values.";
+  return;
+ }
+
+ const price=Number(priceInput);
+ const discount=Number(discountInput);
+
+ if(!Number.isFinite(price)||!Number.isFinite(discount)||price<0||discount<0||discount>100){
+  result.textContent="Enter a valid price and a discount between 0 and 100.";
+  return;
+ }
+
+ const savings=price*discount/100;
+ const finalPrice=price-savings;
+
+ result.innerHTML="<strong>Final Price:</strong> "+finalPrice.toFixed(2)+
+ "<br><strong>You Save:</strong> "+savings.toFixed(2);
+}
+</script>
+</body>
+</html>
