@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate percentages quickly and easily with Knowly's free online percentage calculator.">
+  <title>Percentage Calculator | KNOWLY</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1220;
+      color: #f1f5f9;
+      min-height: 100vh;
+    }
+    header {
+      padding: 22px 8%;
+      border-bottom: 1px solid #263449;
+    }
+    header a {
+      color: #38bdf8;
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    main {
+      max-width: 700px;
+      margin: 65px auto;
+      padding: 25px;
+    }
+    .card {
+      background: #172337;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid #304158;
+    }
+    h1 { font-size: 32px; }
+    p { color: #bdc9d8; line-height: 1.6; }
+    label {
+      display: block;
+      margin: 18px 0 8px;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #52647a;
+      background: #0b1220;
+      color: white;
+      font-size: 17px;
+    }
+    button {
+      margin-top: 22px;
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 8px;
+      background: #0284c7;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 22px;
+      padding: 18px;
+      background: #0b3045;
+      border-radius: 8px;
+      font-size: 20px;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+    .back { color: #38bdf8; }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">KNOWLY</a>
+  </header>
+
+  <main>
+    <a class="back" href="../index.html">← Back to Home</a>
+
+    <h1>Free Percentage Calculator</h1>
+    <p>
+      Calculate percentages quickly and easily.
+      Enter a number and a percentage to find the result.
+    </p>
+
+    <div class="card">
+      <label for="number">Enter your number</label>
+      <input type="number" id="number" placeholder="e.g. 200">
+
+      <label for="percentage">Enter percentage (%)</label>
+      <input type="number" id="percentage" placeholder="e.g. 15">
+
+      <button onclick="calculate()">Calculate Percentage</button>
+
+      <div id="result" aria-live="polite">
+        Your result will appear here.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 KNOWLY. Discover More. Do More. Know More.
+  </footer>
+
+  <script>
+    function calculate() {
+      const number = document.getElementById("number").value;
+      const percentage = document.getElementById("percentage").value;
+      const result = document.getElementById("result");
+
+      if (number.trim() === "" || percentage.trim() === "") {
+        result.textContent = "Please enter both numbers.";
+        return;
+      }
+
+      const value = Number(number);
+      const rate = Number(percentage);
+
+      if (!Number.isFinite(value) || !Number.isFinite(rate)) {
+        result.textContent = "Please enter valid numbers.";
+        return;
+      }
+
+      const answer = (value * rate) / 100;
+      result.textContent = rate + "% of " + value + " = " +
+        Number(answer.toFixed(6));
+    }
+  </script>
+</body>
+</html>
