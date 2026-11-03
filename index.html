@@ -176,6 +176,22 @@ section {padding:65px 0}
   min-height:24px;margin-top:12px;color:var(--cyan);
   font-size:14px;font-weight:700;overflow-wrap:anywhere;
 }
+
+/* Links to standalone tool pages */
+.tool-open-link {
+  display:inline-block;
+  margin-top:12px;
+  color:#69a8ff;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  transition:color .2s ease;
+}
+.tool-open-link:hover {
+  color:var(--cyan);
+  text-decoration:underline;
+}
+
 .filter-row {
   display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;
 }
@@ -380,7 +396,7 @@ footer h4 {margin-top:0}
         <h3>Grammarly</h3><p>Writing support for clarity, grammar and communication.</p>
         <a class="card-link" href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
       </article>
-      <article class="ai-card" data-category="productivity" data-search=" Otter AI meeting transcription notes">
+      <article class="ai-card" data-category="productivity" data-search="otter AI meeting transcription notes">
         <div class="ai-card-top"><div class="ai-icon">◉</div><span class="tag">Productivity</span></div>
         <h3>Otter</h3><p>Tools for meeting notes, transcription and conversation summaries.</p>
         <a class="card-link" href="https://otter.ai/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
@@ -396,6 +412,7 @@ footer h4 {margin-top:0}
       <div><h2>Free Online Tools</h2><p>Useful utilities that work directly in your browser.</p></div>
     </div>
     <div class="tool-grid">
+
       <div class="tool-card" data-search="percentage calculator math">
         <div class="category-icon">%</div><h3>Percentage Calculator</h3>
         <p>Calculate a percentage of any number.</p>
@@ -403,27 +420,35 @@ footer h4 {margin-top:0}
         <input id="percentNumber" type="number" placeholder="Number" aria-label="Number">
         <button class="primary-btn" id="percentBtn">Calculate</button>
         <div class="result" id="percentResult" aria-live="polite"></div>
+        <a class="tool-open-link" href="tools/percentage-calculator.html">Open Full Calculator →</a>
       </div>
+
       <div class="tool-card" data-search="age birthday date calculator">
         <div class="category-icon">🎂</div><h3>Age Calculator</h3>
         <p>Calculate your age from your date of birth.</p>
         <input id="birthDate" type="date" aria-label="Birth date">
         <button class="primary-btn" id="ageBtn">Calculate Age</button>
         <div class="result" id="ageResult" aria-live="polite"></div>
+        <a class="tool-open-link" href="tools/age-calculator.html">Open Full Calculator →</a>
       </div>
+
       <div class="tool-card" data-search="reading time words calculator">
         <div class="category-icon">◷</div><h3>Reading Time</h3>
         <p>Estimate reading time from a word count.</p>
         <input id="wordCount" type="number" min="0" step="1" placeholder="Number of words" aria-label="Number of words">
         <button class="primary-btn" id="readingBtn">Calculate Time</button>
         <div class="result" id="readingResult" aria-live="polite"></div>
+        <a class="tool-open-link" href="tools/reading-time-calculator.html">Open Full Calculator →</a>
       </div>
+
       <div class="tool-card" data-search="word counter character count text">
         <div class="category-icon">¶</div><h3>Word & Character Counter</h3>
         <p>Count words, characters and sentences in your text.</p>
         <textarea id="counterText" placeholder="Paste or type your text here..." aria-label="Text to count"></textarea>
         <div class="result" id="counterResult" aria-live="polite">0 words · 0 characters</div>
+        <a class="tool-open-link" href="tools/word-counter.html">Open Full Counter →</a>
       </div>
+
       <div class="tool-card" data-search="case converter uppercase lowercase text">
         <div class="category-icon">Aa</div><h3>Text Case Converter</h3>
         <p>Convert text to uppercase or lowercase.</p>
@@ -432,7 +457,9 @@ footer h4 {margin-top:0}
         <button class="primary-btn" id="lowerBtn">lowercase</button>
         <button class="primary-btn" id="copyCaseBtn">Copy Result</button>
         <div class="result" id="caseResult" aria-live="polite"></div>
+        <a class="tool-open-link" href="tools/text-case-converter.html">Open Full Converter →</a>
       </div>
+
       <div class="tool-card" data-search="discount calculator sale price savings">
         <div class="category-icon">％</div><h3>Discount Calculator</h3>
         <p>Find the sale price after a discount.</p>
@@ -440,7 +467,9 @@ footer h4 {margin-top:0}
         <input id="discountPercent" type="number" min="0" max="100" placeholder="Discount percentage" aria-label="Discount percentage">
         <button class="primary-btn" id="discountBtn">Calculate Discount</button>
         <div class="result" id="discountResult" aria-live="polite"></div>
+        <a class="tool-open-link" href="tools/discount-calculator.html">Open Full Calculator →</a>
       </div>
+
     </div>
     <p class="notice">These tools run in your browser. KNOWLY does not receive the text or numbers you enter into them.</p>
   </div>
