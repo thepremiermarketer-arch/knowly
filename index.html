@@ -4,47 +4,656 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — KNOWLY</title>
-<meta name="description" content="Learn how KNOWLY handles information and privacy.">
+
+<title>KNOWLY — AI Tools, Free Online Tools & Knowledge</title>
+<meta name="description" content="Discover AI tools, free online utilities, practical business resources and useful guides with KNOWLY.">
+<meta name="theme-color" content="#0b1220">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://thepremiermarketer-arch.github.io/knowly/">
+
+<meta property="og:title" content="KNOWLY — Discover More. Do More. Know More.">
+<meta property="og:description" content="Explore AI tools, free online utilities and practical knowledge.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thepremiermarketer-arch.github.io/knowly/">
+
 <style>
-body{margin:0;padding:35px 20px;background:#0b1220;color:#f1f5f9;font:16px/1.8 Arial,sans-serif}
-main{max-width:800px;margin:auto}
-a{color:#69a8ff}
-h1,h2{line-height:1.3}
-p,li{color:#c0cada}
+:root {
+  --bg:#0b1220;
+  --surface:#111c2e;
+  --surface2:#17263b;
+  --text:#f1f5f9;
+  --muted:#9eacc0;
+  --blue:#438cff;
+  --cyan:#37d6e9;
+  --border:#25344a;
+  --shadow:0 15px 45px rgba(0,0,0,.18);
+}
+body.light {
+  --bg:#f5f8fc;
+  --surface:#fff;
+  --surface2:#edf3fa;
+  --text:#152238;
+  --muted:#607086;
+  --border:#dce5ef;
+  --shadow:0 15px 45px rgba(30,60,100,.07);
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth;scroll-padding-top:90px}
+body {
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  transition:background .2s,color .2s;
+}
+a {color:inherit;text-decoration:none}
+button,input,textarea,select {font:inherit}
+button {cursor:pointer}
+.container {width:min(1160px,92%);margin:auto}
+header {
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+}
+.nav {
+  min-height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:18px;
+}
+.logo {
+  display:flex;align-items:center;gap:10px;
+  font-size:25px;font-weight:900;letter-spacing:-1px;
+}
+.logo-icon {
+  width:38px;height:38px;display:grid;place-items:center;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  color:white;
+}
+.nav-links {
+  display:flex;align-items:center;gap:23px;
+  font-size:14px;color:var(--muted);
+}
+.nav-links a:hover,.text-link:hover {color:var(--blue)}
+.actions {display:flex;align-items:center;gap:9px}
+.icon-btn,.menu-btn {
+  width:40px;height:40px;border:1px solid var(--border);
+  border-radius:12px;background:var(--surface);
+  color:var(--text);
+}
+.menu-btn {display:none}
+.hero {
+  padding:95px 0 75px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(54,132,255,.18),transparent 58%);
+}
+.eyebrow {
+  display:inline-flex;padding:7px 14px;
+  border:1px solid rgba(67,140,255,.35);
+  border-radius:30px;color:#69a8ff;
+  font-size:12px;font-weight:800;letter-spacing:1.2px;
+}
+h1 {
+  max-width:900px;margin:24px auto 16px;
+  font-size:clamp(40px,6vw,72px);
+  line-height:1.08;letter-spacing:-3px;
+}
+.gradient {
+  background:linear-gradient(90deg,#4e9aff,#4be0e4);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p {
+  max-width:680px;margin:0 auto 28px;
+  color:var(--muted);font-size:17px;
+}
+.search-box {
+  display:flex;max-width:680px;margin:auto;padding:7px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:15px;box-shadow:var(--shadow);
+}
+.search-box input {
+  flex:1;min-width:0;padding:13px;border:0;outline:0;
+  color:var(--text);background:transparent;
+}
+.primary-btn {
+  display:inline-flex;justify-content:center;align-items:center;
+  padding:11px 19px;border:0;border-radius:10px;
+  background:linear-gradient(135deg,#438cff,#286ce5);
+  color:white;font-weight:700;
+}
+.primary-btn:hover {filter:brightness(1.1)}
+.quick-links {
+  display:flex;justify-content:center;flex-wrap:wrap;
+  gap:10px;margin-top:20px;
+}
+.quick-links a,.chip {
+  padding:7px 13px;border:1px solid var(--border);
+  border-radius:25px;color:var(--muted);font-size:12px;
+}
+section {padding:65px 0}
+.section-heading {
+  display:flex;justify-content:space-between;align-items:end;
+  gap:15px;margin-bottom:25px;
+}
+.section-heading h2 {margin:0;font-size:30px;letter-spacing:-1px}
+.section-heading p {margin:5px 0 0;color:var(--muted)}
+.category-grid,.tool-grid,.ai-grid,.article-grid {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;
+}
+.category-card,.tool-card,.ai-card,.article-card {
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:18px;padding:23px;
+  transition:transform .2s,border-color .2s;
+  min-width:0;
+}
+.category-card:hover,.tool-card:hover,.ai-card:hover,.article-card:hover {
+  transform:translateY(-4px);border-color:var(--blue);
+}
+.category-icon {
+  width:47px;height:47px;display:grid;place-items:center;
+  border-radius:14px;background:var(--surface2);
+  font-size:23px;margin-bottom:15px;
+}
+.category-card h3,.tool-card h3,.ai-card h3,.article-card h3 {
+  margin:0 0 8px;font-size:18px;
+}
+.category-card p,.tool-card p,.ai-card p,.article-card p {
+  color:var(--muted);font-size:14px;margin:0;
+}
+.tools-section,.ai-section {
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.tool-card {background:var(--bg)}
+.tool-card input,.tool-card textarea,.tool-card select {
+  width:100%;margin-top:10px;padding:11px;
+  border-radius:9px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);
+}
+.tool-card textarea {min-height:100px;resize:vertical}
+.tool-card button {width:100%;margin-top:12px}
+.result {
+  min-height:24px;margin-top:12px;color:var(--cyan);
+  font-size:14px;font-weight:700;overflow-wrap:anywhere;
+}
+.filter-row {
+  display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;
+}
+.filter-btn {
+  border:1px solid var(--border);border-radius:25px;
+  padding:8px 14px;background:var(--surface);
+  color:var(--muted);font-size:13px;
+}
+.filter-btn.active {
+  background:var(--blue);border-color:var(--blue);color:white;
+}
+.ai-section .ai-card {background:var(--bg)}
+.ai-card-top {
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;margin-bottom:14px;
+}
+.ai-icon {
+  width:42px;height:42px;display:grid;place-items:center;
+  border-radius:12px;background:var(--surface2);font-size:21px;
+}
+.tag {
+  font-size:11px;color:#69a8ff;font-weight:800;
+  text-transform:uppercase;letter-spacing:.7px;
+}
+.ai-card .card-link {
+  display:inline-block;margin-top:16px;color:#69a8ff;
+  font-size:13px;font-weight:700;
+}
+.ai-card .card-link:hover {text-decoration:underline}
+.article-card {padding:0;overflow:hidden}
+.article-image {
+  height:135px;display:grid;place-items:center;font-size:44px;
+  background:linear-gradient(135deg,#142d50,#1a4b72);
+}
+.article-content {padding:21px}
+.article-meta {color:var(--muted);font-size:12px;margin-top:13px}
+.cta {
+  padding:52px 25px;border:1px solid var(--border);
+  border-radius:24px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(67,140,255,.2),transparent 70%),var(--surface);
+}
+.cta h2 {font-size:clamp(25px,4vw,34px);margin:17px 0 8px}
+.cta p {color:var(--muted)}
+footer {padding:45px 0;border-top:1px solid var(--border)}
+.footer-grid {display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer p,footer a {color:var(--muted);font-size:13px}
+footer h4 {margin-top:0}
+.copyright {
+  margin-top:30px;padding-top:20px;
+  border-top:1px solid var(--border);
+  color:var(--muted);font-size:12px;
+}
+.empty {color:var(--muted);text-align:center;padding:25px;grid-column:1/-1}
+.notice {font-size:12px;color:var(--muted);margin-top:18px}
+[hidden] {display:none!important}
+@media(max-width:800px) {
+  .nav-links {
+    display:none;position:absolute;top:76px;left:0;right:0;
+    padding:20px;background:var(--surface);
+    border-bottom:1px solid var(--border);
+    flex-direction:column;align-items:stretch;
+  }
+  .nav-links.open {display:flex}
+  .menu-btn {display:block}
+  .category-grid,.tool-grid,.ai-grid,.article-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero {padding:70px 0 55px}
+  .footer-grid {grid-template-columns:1fr}
+}
+@media(max-width:560px) {
+  .category-grid,.tool-grid,.ai-grid,.article-grid {grid-template-columns:1fr}
+  .section-heading {align-items:start;flex-direction:column}
+  .search-box .primary-btn {padding:10px 13px}
+  h1 {letter-spacing:-2px}
+}
 </style>
 </head>
+
 <body>
+<header>
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="KNOWLY home">
+      <span class="logo-icon">K</span> KNOWLY
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#categories">Discover</a>
+      <a href="#ai-tools">AI Tools</a>
+      <a href="#tools">Free Tools</a>
+      <a href="#articles">Guides</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle color theme">☀</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+    </div>
+  </div>
+</header>
+
 <main>
-<a href="./">← Back to KNOWLY</a>
-<h1>Privacy Policy</h1>
-<p>Last updated: November 3, 2026</p>
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">YOUR WORLD OF KNOWLEDGE</span>
+    <h1>Discover More.<br><span class="gradient">Do More. Know More.</span></h1>
+    <p>Explore useful AI tools, free online utilities, practical business resources and knowledge to help you work smarter.</p>
+    <form class="search-box" id="searchForm">
+      <input id="searchInput" type="search" placeholder="Search tools, topics and guides..." aria-label="Search KNOWLY">
+      <button class="primary-btn" type="submit">Explore</button>
+    </form>
+    <div class="quick-links">
+      <a href="#ai-tools">AI Tools</a>
+      <a href="#tools">Free Calculators</a>
+      <a href="#articles">Guides</a>
+      <a href="#categories">Business</a>
+    </div>
+  </div>
+</section>
 
-<h2>1. Introduction</h2>
-<p>KNOWLY provides information, online utilities and links to third-party websites. This policy explains how information may be handled when you use this website.</p>
+<section id="categories">
+  <div class="container">
+    <div class="section-heading">
+      <div><h2>Explore KNOWLY</h2><p>Discover useful resources across different topics.</p></div>
+    </div>
+    <div class="category-grid">
+      <a class="category-card" href="#ai-tools" data-search="AI artificial intelligence technology">
+        <div class="category-icon">✦</div><h3>AI & Technology</h3>
+        <p>Explore AI platforms and tools for work, creativity and learning.</p>
+      </a>
+      <a class="category-card" href="#tools" data-search="free online tools calculators converters">
+        <div class="category-icon">⌘</div><h3>Free Online Tools</h3>
+        <p>Use practical utilities for everyday digital tasks.</p>
+      </a>
+      <a class="category-card" href="#articles" data-search="business money entrepreneurship">
+        <div class="category-icon">◈</div><h3>Business & Money</h3>
+        <p>Learn about entrepreneurship, productivity and digital business.</p>
+      </a>
+      <a class="category-card" href="#articles" data-search="education knowledge learning">
+        <div class="category-icon">◎</div><h3>Education & Knowledge</h3>
+        <p>Explore learning resources and useful explainers.</p>
+      </a>
+      <a class="category-card" href="#articles" data-search="travel destinations places">
+        <div class="category-icon">✈</div><h3>Travel & Places</h3>
+        <p>Find inspiration and practical travel information.</p>
+      </a>
+      <a class="category-card" href="#articles" data-search="health lifestyle wellness">
+        <div class="category-icon">♡</div><h3>Health & Lifestyle</h3>
+        <p>Discover general wellness and everyday lifestyle topics.</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-<h2>2. Information You Enter into Tools</h2>
-<p>The calculators and text utilities currently provided on KNOWLY process your entries in your browser. The website's current tools do not send the text or numbers you enter to a KNOWLY server.</p>
+<section class="ai-section" id="ai-tools">
+  <div class="container">
+    <div class="section-heading">
+      <div><h2>Explore AI Tools</h2><p>Discover popular AI platforms by what you want to create.</p></div>
+    </div>
+    <div class="filter-row" id="aiFilters">
+      <button class="filter-btn active" data-filter="all">All tools</button>
+      <button class="filter-btn" data-filter="writing">Writing</button>
+      <button class="filter-btn" data-filter="images">Images</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+      <button class="filter-btn" data-filter="productivity">Productivity</button>
+      <button class="filter-btn" data-filter="coding">Coding</button>
+    </div>
+    <div class="ai-grid" id="aiGrid">
+      <article class="ai-card" data-category="writing" data-search="chatgpt openai writing assistant chatbot">
+        <div class="ai-card-top"><div class="ai-icon">✦</div><span class="tag">Writing</span></div>
+        <h3>ChatGPT</h3><p>AI assistant for writing, brainstorming, learning and everyday tasks.</p>
+        <a class="card-link" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="writing" data-search="claude anthropic writing assistant">
+        <div class="ai-card-top"><div class="ai-icon">✳</div><span class="tag">Writing</span></div>
+        <h3>Claude</h3><p>AI assistant for writing, analysis, coding and working with information.</p>
+        <a class="card-link" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="images" data-search="adobe firefly image generation design">
+        <div class="ai-card-top"><div class="ai-icon">✺</div><span class="tag">Images</span></div>
+        <h3>Adobe Firefly</h3><p>Explore generative AI features for images and creative design.</p>
+        <a class="card-link" href="https://firefly.adobe.com/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="images" data-search="canva magic studio images design">
+        <div class="ai-card-top"><div class="ai-icon">▧</div><span class="tag">Images</span></div>
+        <h3>Canva</h3><p>Design platform with AI-assisted creative and visual tools.</p>
+        <a class="card-link" href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="research" data-search="perplexity research answers search">
+        <div class="ai-card-top"><div class="ai-icon">⌕</div><span class="tag">Research</span></div>
+        <h3>Perplexity</h3><p>AI-powered search and research experience for exploring questions.</p>
+        <a class="card-link" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="productivity" data-search="notion ai productivity notes workspace">
+        <div class="ai-card-top"><div class="ai-icon">▤</div><span class="tag">Productivity</span></div>
+        <h3>Notion</h3><p>Workspace for notes, planning, documents and team collaboration.</p>
+        <a class="card-link" href="https://www.notion.com/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="coding" data-search="github copilot coding programming">
+        <div class="ai-card-top"><div class="ai-icon">⌘</div><span class="tag">Coding</span></div>
+        <h3>GitHub Copilot</h3><p>AI-powered assistance for developers and software workflows.</p>
+        <a class="card-link" href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="writing" data-search="grammarly writing grammar">
+        <div class="ai-card-top"><div class="ai-icon">G</div><span class="tag">Writing</span></div>
+        <h3>Grammarly</h3><p>Writing support for clarity, grammar and communication.</p>
+        <a class="card-link" href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+      <article class="ai-card" data-category="productivity" data-search=" Otter AI meeting transcription notes">
+        <div class="ai-card-top"><div class="ai-icon">◉</div><span class="tag">Productivity</span></div>
+        <h3>Otter</h3><p>Tools for meeting notes, transcription and conversation summaries.</p>
+        <a class="card-link" href="https://otter.ai/" target="_blank" rel="noopener noreferrer">Visit official website ↗</a>
+      </article>
+    </div>
+    <p class="notice">Tool features, availability and pricing can change. Check each provider's official website for current details. KNOWLY is an independent directory and is not affiliated with these providers.</p>
+  </div>
+</section>
 
-<h2>3. Local Storage</h2>
-<p>KNOWLY may use your browser's local storage to remember your display theme preference. This information stays in your browser.</p>
+<section class="tools-section" id="tools">
+  <div class="container">
+    <div class="section-heading">
+      <div><h2>Free Online Tools</h2><p>Useful utilities that work directly in your browser.</p></div>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card" data-search="percentage calculator math">
+        <div class="category-icon">%</div><h3>Percentage Calculator</h3>
+        <p>Calculate a percentage of any number.</p>
+        <input id="percent" type="number" placeholder="Percentage" aria-label="Percentage">
+        <input id="percentNumber" type="number" placeholder="Number" aria-label="Number">
+        <button class="primary-btn" id="percentBtn">Calculate</button>
+        <div class="result" id="percentResult" aria-live="polite"></div>
+      </div>
+      <div class="tool-card" data-search="age birthday date calculator">
+        <div class="category-icon">🎂</div><h3>Age Calculator</h3>
+        <p>Calculate your age from your date of birth.</p>
+        <input id="birthDate" type="date" aria-label="Birth date">
+        <button class="primary-btn" id="ageBtn">Calculate Age</button>
+        <div class="result" id="ageResult" aria-live="polite"></div>
+      </div>
+      <div class="tool-card" data-search="reading time words calculator">
+        <div class="category-icon">◷</div><h3>Reading Time</h3>
+        <p>Estimate reading time from a word count.</p>
+        <input id="wordCount" type="number" min="0" step="1" placeholder="Number of words" aria-label="Number of words">
+        <button class="primary-btn" id="readingBtn">Calculate Time</button>
+        <div class="result" id="readingResult" aria-live="polite"></div>
+      </div>
+      <div class="tool-card" data-search="word counter character count text">
+        <div class="category-icon">¶</div><h3>Word & Character Counter</h3>
+        <p>Count words, characters and sentences in your text.</p>
+        <textarea id="counterText" placeholder="Paste or type your text here..." aria-label="Text to count"></textarea>
+        <div class="result" id="counterResult" aria-live="polite">0 words · 0 characters</div>
+      </div>
+      <div class="tool-card" data-search="case converter uppercase lowercase text">
+        <div class="category-icon">Aa</div><h3>Text Case Converter</h3>
+        <p>Convert text to uppercase or lowercase.</p>
+        <textarea id="caseText" placeholder="Enter text to convert..." aria-label="Text to convert"></textarea>
+        <button class="primary-btn" id="upperBtn">UPPERCASE</button>
+        <button class="primary-btn" id="lowerBtn">lowercase</button>
+        <button class="primary-btn" id="copyCaseBtn">Copy Result</button>
+        <div class="result" id="caseResult" aria-live="polite"></div>
+      </div>
+      <div class="tool-card" data-search="discount calculator sale price savings">
+        <div class="category-icon">％</div><h3>Discount Calculator</h3>
+        <p>Find the sale price after a discount.</p>
+        <input id="originalPrice" type="number" min="0" placeholder="Original price" aria-label="Original price">
+        <input id="discountPercent" type="number" min="0" max="100" placeholder="Discount percentage" aria-label="Discount percentage">
+        <button class="primary-btn" id="discountBtn">Calculate Discount</button>
+        <div class="result" id="discountResult" aria-live="polite"></div>
+      </div>
+    </div>
+    <p class="notice">These tools run in your browser. KNOWLY does not receive the text or numbers you enter into them.</p>
+  </div>
+</section>
 
-<h2>4. Third-Party Websites</h2>
-<p>KNOWLY links to external services and websites. Those websites have their own privacy policies and practices. We are not responsible for their content or data handling.</p>
+<section id="articles">
+  <div class="container">
+    <div class="section-heading">
+      <div><h2>Knowledge & Guides</h2><p>Explore the subjects KNOWLY is building resources around.</p></div>
+    </div>
+    <div class="article-grid">
+      <article class="article-card" data-search="AI tools productivity technology">
+        <div class="article-image">✦</div>
+        <div class="article-content"><span class="tag">AI & Technology</span><h3>How to Choose the Right AI Tool</h3><p>Compare tools by task, features, privacy and cost before adding them to your workflow.</p><div class="article-meta">KNOWLY · Topic overview</div></div>
+      </article>
+      <article class="article-card" data-search="online business entrepreneurship business">
+        <div class="article-image">◈</div>
+        <div class="article-content"><span class="tag">Business</span><h3>Understanding the Basics of an Online Business</h3><p>Explore business models, customer needs and the work involved in building a digital business.</p><div class="article-meta">KNOWLY · Topic overview</div></div>
+      </article>
+      <article class="article-card" data-search="productivity learning knowledge">
+        <div class="article-image">◎</div>
+        <div class="article-content"><span class="tag">Productivity</span><h3>Build a More Effective Learning Routine</h3><p>Practical ideas for setting learning goals and making time for focused study.</p><div class="article-meta">KNOWLY · Topic overview</div></div>
+      </article>
+    </div>
+    <p class="notice">These are topic previews, not full articles. In the next publishing stage, each guide should have its own researched page, references and publication date.</p>
+  </div>
+</section>
 
-<h2>5. Advertising and Analytics</h2>
-<p>KNOWLY may introduce advertising or analytics services in the future. If these services are added, this policy should be updated to explain the relevant data practices, cookies and choices available to visitors.</p>
-
-<h2>6. Children's Privacy</h2>
-<p>KNOWLY is a general information website and is not specifically directed at children. Parents and guardians should supervise children's use of online services.</p>
-
-<h2>7. Changes to This Policy</h2>
-<p>This policy may be updated as the website develops. The latest version will be published on this page.</p>
-
-<h2>8. Contact</h2>
-<p>For privacy questions, contact: <a href="mailto:knowly.contact@gmail.com">knowly.contact@gmail.com</a>.</p>
-
-<p><a href="./">Return to KNOWLY</a></p>
+<section id="about">
+  <div class="container">
+    <div class="cta">
+      <span class="eyebrow">DISCOVER YOUR NEXT ADVANTAGE</span>
+      <h2>Knowledge should be accessible to everyone.</h2>
+      <p>Explore useful tools, learn new things and make more informed decisions with KNOWLY.</p>
+      <a href="#ai-tools" class="primary-btn">Explore AI Tools</a>
+    </div>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div><a href="#" class="logo"><span class="logo-icon">K</span> KNOWLY</a><p>Your world of tools, knowledge and discovery.</p></div>
+      <div><h4>Explore</h4><p><a href="#categories">Categories</a></p><p><a href="#ai-tools">AI Tools</a></p><p><a href="#tools">Free Tools</a></p></div>
+      <div><h4>Company</h4><p><a href="#about">About KNOWLY</a></p><p><a href="mailto:knowly.contact@gmail.com">Contact</a></p><p><a href="privacy.html">Privacy Policy</a></p></div>
+    </div>
+    <div class="copyright">© <span id="year"></span> KNOWLY. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+
+// Theme
+try {
+  if (localStorage.getItem("knowly-theme") === "light") {
+    document.body.classList.add("light");
+  }
+} catch (error) {}
+
+$("themeBtn").addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  try {
+    localStorage.setItem("knowly-theme",
+      document.body.classList.contains("light") ? "light" : "dark");
+  } catch (error) {}
+});
+
+// Mobile menu
+$("menuBtn").addEventListener("click", () => {
+  $("navLinks").classList.toggle("open");
+});
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => $("navLinks").classList.remove("open"));
+});
+
+// AI category filters
+let activeFilter = "all";
+document.querySelectorAll("#aiFilters button").forEach(button => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll("#aiFilters button").forEach(item =>
+      item.classList.toggle("active", item === button));
+    applySearch($("searchInput").value.trim().toLowerCase());
+  });
+});
+
+// Search across directory, tools, categories and topic previews
+function applySearch(query) {
+  let visibleCount = 0;
+  const searchable = document.querySelectorAll("[data-search]");
+  searchable.forEach(card => {
+    const text = (card.dataset.search + " " + card.innerText).toLowerCase();
+    const matchesText = !query || text.includes(query);
+    const matchesFilter = !card.classList.contains("ai-card") ||
+      activeFilter === "all" || card.dataset.category === activeFilter;
+    const show = matchesText && matchesFilter;
+    card.hidden = !show;
+    if (show) visibleCount++;
+  });
+  let message = $("searchMessage");
+  if (!message) {
+    message = document.createElement("p");
+    message.id = "searchMessage";
+    message.className = "empty";
+    $("articles").querySelector(".container").appendChild(message);
+  }
+  message.hidden = !query || visibleCount > 0;
+  message.textContent = "No matching content found. Try another search.";
+}
+$("searchForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const query = $("searchInput").value.trim().toLowerCase();
+  applySearch(query);
+  if (query) {
+    const firstMatch = document.querySelector('[data-search]:not([hidden])');
+    if (firstMatch) firstMatch.scrollIntoView({behavior:"smooth",block:"center"});
+    else $("articles").scrollIntoView({behavior:"smooth"});
+  } else {
+    $("categories").scrollIntoView({behavior:"smooth"});
+  }
+});
+
+// Percentage calculator
+$("percentBtn").addEventListener("click", () => {
+  const p = $("percent").value;
+  const n = $("percentNumber").value;
+  if (p === "" || n === "" || !Number.isFinite(Number(p)) || !Number.isFinite(Number(n))) {
+    $("percentResult").textContent = "Please enter valid numbers.";
+    return;
+  }
+  $("percentResult").textContent =
+    `${p}% of ${n} = ${(Number(p)*Number(n)/100).toLocaleString("en-US")}`;
+});
+
+// Age calculator
+$("ageBtn").addEventListener("click", () => {
+  const value = $("birthDate").value;
+  const result = $("ageResult");
+  if (!value) { result.textContent = "Please select your birth date."; return; }
+  const birth = new Date(value + "T00:00:00");
+  const today = new Date();
+  if (Number.isNaN(birth.getTime()) || birth > today) {
+    result.textContent = "Please enter a valid past date."; return;
+  }
+  let age = today.getFullYear() - birth.getFullYear();
+  const passed = today.getMonth() > birth.getMonth() ||
+    (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate());
+  if (!passed) age--;
+  result.textContent = `Your age is ${age} years.`;
+});
+
+// Reading time
+$("readingBtn").addEventListener("click", () => {
+  const raw = $("wordCount").value;
+  const words = Number(raw);
+  if (raw === "" || !Number.isInteger(words) || words < 0) {
+    $("readingResult").textContent = "Enter a valid whole number of words."; return;
+  }
+  const minutes = words / 200;
+  $("readingResult").textContent = words === 0 ? "Estimated reading time: less than a minute." :
+    `Estimated reading time: ${Math.max(1,Math.ceil(minutes))} minute(s).`;
+});
+
+// Word and character counter
+$("counterText").addEventListener("input", () => {
+  const text = $("counterText").value;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const sentences = text.trim() ? (text.match(/[.!?]+/g) || []).length : 0;
+  $("counterResult").textContent =
+    `${words} words · ${text.length} characters · ${sentences} sentences`;
+});
+
+// Case converter
+$("upperBtn").addEventListener("click", () => {
+  $("caseText").value = $("caseText").value.toUpperCase();
+  $("caseResult").textContent = "Converted to uppercase.";
+});
+$("lowerBtn").addEventListener("click", () => {
+  $("caseText").value = $("caseText").value.toLowerCase();
+  $("caseResult").textContent = "Converted to lowercase.";
+});
+$("copyCaseBtn").addEventListener("click", async () => {
+  const value = $("caseText").value;
+  try {
+    await navigator.clipboard.writeText(value);
+    $("caseResult").textContent = "Copied to clipboard.";
+  } catch (error) {
+    $("caseResult").textContent = "Copy is unavailable in this browser. Select and copy the text manually.";
+  }
+});
+
+// Discount calculator
+$("discountBtn").addEventListener("click", () => {
+  const priceRaw = $("originalPrice").value;
+  const discountRaw = $("discountPercent").value;
+  const price = Number(priceRaw);
+  const discount = Number(discountRaw);
+  if (priceRaw === "" || discountRaw === "" || !Number.isFinite(price) ||
+      !Number.isFinite(discount) || price < 0 || discount < 0 || discount > 100) {
+    $("discountResult").textContent = "Enter a valid price and discount from 0 to 100.";
+    return;
+  }
+  const saving = price * discount / 100;
+  const finalPrice = price - saving;
+  $("discountResult").textContent =
+    `You save ${saving.toFixed(2)} · Sale price: ${finalPrice.toFixed(2)}`;
+});
+
+// Footer year
+$("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
