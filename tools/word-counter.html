@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Count words, characters, sentences, and paragraphs with Knowly's free online word counter.">
+<title>Free Word Counter | KNOWLY</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:#f1f5f9;font-family:Arial,sans-serif}
+header{padding:22px 8%;border-bottom:1px solid #263449}
+header a,.back{color:#38bdf8;text-decoration:none}
+header a{font-size:25px;font-weight:bold}
+main{max-width:750px;margin:60px auto;padding:25px}
+.card{background:#172337;padding:30px;border-radius:16px;border:1px solid #304158}
+h1{font-size:32px}
+p{color:#bdc9d8;line-height:1.6}
+textarea{width:100%;min-height:220px;padding:15px;border-radius:8px;border:1px solid #52647a;background:#0b1220;color:white;font-size:16px;resize:vertical}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px}
+.stat{background:#0b3045;padding:18px;border-radius:8px;text-align:center}
+.stat strong{display:block;font-size:27px;color:#38bdf8;margin-bottom:6px}
+.stat span{color:#bdc9d8;font-size:14px}
+footer{text-align:center;padding:25px;color:#94a3b8}
+@media(min-width:600px){.stats{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header><a href="../index.html">KNOWLY</a></header>
+<main>
+<a class="back" href="../index.html">← Back to Home</a>
+<h1>Free Word Counter</h1>
+<p>Count words, characters, sentences, and paragraphs instantly as you type.</p>
+<div class="card">
+<textarea id="text" placeholder="Start typing or paste your text here..."></textarea>
+<div class="stats">
+<div class="stat"><strong id="words">0</strong><span>Words</span></div>
+<div class="stat"><strong id="characters">0</strong><span>Characters</span></div>
+<div class="stat"><strong id="noSpaces">0</strong><span>Characters Without Spaces</span></div>
+<div class="stat"><strong id="sentences">0</strong><span>Sentences</span></div>
+<div class="stat"><strong id="paragraphs">0</strong><span>Paragraphs</span></div>
+</div>
+</div>
+</main>
+<footer>© 2026 KNOWLY. Discover More. Do More. Know More.</footer>
+<script>
+const textArea=document.getElementById("text");
+
+function countText(){
+ const text=textArea.value;
+ const trimmed=text.trim();
+
+ const words=trimmed ? trimmed.split(/\s+/u).length : 0;
+ const characters=text.length;
+ const noSpaces=text.replace(/\s/g,"").length;
+ const sentences=(trimmed.match(/[.!?]+(?=\s|$)/g)||[]).length;
+ const paragraphs=trimmed ? trimmed.split(/\n\s*\n/).filter(p=>p.trim()).length : 0;
+
+ document.getElementById("words").textContent=words;
+ document.getElementById("characters").textContent=characters;
+ document.getElementById("noSpaces").textContent=noSpaces;
+ document.getElementById("sentences").textContent=sentences;
+ document.getElementById("paragraphs").textContent=paragraphs;
+}
+
+textArea.addEventListener("input",countText);
+</script>
+</body>
+</html>
