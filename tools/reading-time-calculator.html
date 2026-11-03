@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Estimate how long it takes to read any text with Knowly's free reading time calculator.">
+<title>Free Reading Time Calculator | KNOWLY</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1220;color:#f1f5f9;font-family:Arial,sans-serif}
+header{padding:22px 8%;border-bottom:1px solid #263449}
+header a,.back{color:#38bdf8;text-decoration:none}
+header a{font-size:25px;font-weight:bold}
+main{max-width:750px;margin:60px auto;padding:25px}
+.card{background:#172337;padding:30px;border-radius:16px;border:1px solid #304158}
+h1{font-size:32px}
+p{color:#bdc9d8;line-height:1.6}
+textarea{width:100%;min-height:220px;padding:15px;border-radius:8px;border:1px solid #52647a;background:#0b1220;color:white;font-size:16px;resize:vertical}
+label{display:block;margin:20px 0 8px}
+input{width:100%;padding:14px;border-radius:8px;border:1px solid #52647a;background:#0b1220;color:white;font-size:17px}
+.result{margin-top:22px;padding:22px;background:#0b3045;border-radius:8px;text-align:center}
+.result strong{display:block;font-size:30px;color:#38bdf8;margin:10px}
+footer{text-align:center;padding:25px;color:#94a3b8}
+</style>
+</head>
+<body>
+<header><a href="../index.html">KNOWLY</a></header>
+<main>
+<a class="back" href="../index.html">← Back to Home</a>
+<h1>Free Reading Time Calculator</h1>
+<p>Find out how long it takes to read your text based on your reading speed.</p>
+
+<div class="card">
+<label for="text">Paste or type your text</label>
+<textarea id="text" placeholder="Enter your text here..."></textarea>
+
+<label for="speed">Reading speed (words per minute)</label>
+<input type="number" id="speed" min="1" max="2000" value="200">
+
+<div class="result" aria-live="polite">
+Estimated Reading Time
+<strong id="time">0 seconds</strong>
+<span id="wordCount">0 words</span>
+</div>
+</div>
+</main>
+<footer>© 2026 KNOWLY. Discover More. Do More. Know More.</footer>
+
+<script>
+const textInput=document.getElementById("text");
+const speedInput=document.getElementById("speed");
+
+function calculateReadingTime(){
+ const text=textInput.value.trim();
+ const speed=Number(speedInput.value);
+ const words=text ? text.split(/\s+/u).length : 0;
+
+ document.getElementById("wordCount").textContent=words+" words";
+
+ if(!speedInput.value.trim()||!Number.isFinite(speed)||speed<=0){
+  document.getElementById("time").textContent="Enter a valid reading speed";
+  return;
+ }
+
+ const totalSeconds=words/speed*60;
+
+ let display;
+ if(totalSeconds===0){
+  display="0 seconds";
+ }else if(totalSeconds<60){
+  display=Math.ceil(totalSeconds)+" seconds";
+ }else{
+  const minutes=Math.ceil(totalSeconds/60);
+  display=minutes+" minute"+(minutes===1?"":"s");
+ }
+
+ document.getElementById("time").textContent=display;
+}
+
+textInput.addEventListener("input",calculateReadingTime);
+speedInput.addEventListener("input",calculateReadingTime);
+</script>
+</body>
+</html>
