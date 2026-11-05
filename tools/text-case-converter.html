@@ -3,8 +3,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Convert text to uppercase, lowercase, title case, and sentence case with Knowly's free text case converter.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Convert text to uppercase, lowercase, title case and sentence case with Knowly's free text case converter.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Free Text Case Converter | KNOWLY</title>
 <style>
 *{box-sizing:border-box}
@@ -17,6 +18,7 @@ main{max-width:750px;margin:60px auto;padding:25px}
 h1{font-size:32px}
 p{color:#bdc9d8;line-height:1.6}
 textarea{width:100%;min-height:200px;padding:15px;border-radius:8px;border:1px solid #52647a;background:#0b1220;color:white;font-size:16px;resize:vertical}
+textarea:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #38bdf8;outline-offset:3px}
 .buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
 button{padding:13px;background:#0284c7;color:white;border:0;border-radius:8px;font-size:14px;cursor:pointer}
 button:hover{background:#0369a1}
@@ -27,72 +29,98 @@ footer{text-align:center;padding:25px;color:#94a3b8}
 </head>
 <body>
 <header><a href="../index.html">KNOWLY</a></header>
+
 <main>
 <a class="back" href="../index.html">← Back to Home</a>
 <h1>Free Text Case Converter</h1>
-<p>Convert your text into different letter cases instantly. Type or paste your text, then choose a conversion.</p>
+<p>Convert your text into different letter cases instantly. Your text is processed locally in your browser.</p>
 
 <div class="card">
-<textarea id="text" placeholder="Type or paste your text here..."></textarea>
+<textarea id="text" maxlength="100000" autocomplete="off"
+aria-label="Text to convert"
+placeholder="Type or paste your text here..."></textarea>
 
 <div class="buttons">
-<button onclick="convert('upper')">UPPERCASE</button>
-<button onclick="convert('lower')">lowercase</button>
-<button onclick="convert('title')">Title Case</button>
-<button onclick="convert('sentence')">Sentence case</button>
-<button onclick="convert('alternating')">aLtErNaTiNg</button>
-<button onclick="copyText()">Copy Text</button>
+<button type="button" data-action="upper">UPPERCASE</button>
+<button type="button" data-action="lower">lowercase</button>
+<button type="button" data-action="title">Title Case</button>
+<button type="button" data-action="sentence">Sentence case</button>
+<button type="button" data-action="alternating">aLtErNaTiNg</button>
+<button type="button" id="copyButton">Copy Text</button>
 </div>
 
-<p id="message" aria-live="polite"></p>
+<p id="message" role="status" aria-live="polite"></p>
 </div>
 </main>
+
 <footer>© 2026 KNOWLY. Discover More. Do More. Know More.</footer>
 
 <script>
-const textArea=document.getElementById("text");
-const message=document.getElementById("message");
+"use strict";
 
-function convert(type){
- let text=textArea.value;
+const textArea = document.getElementById("text");
+const message = document.getElementById("message");
 
- if(type==="upper"){
-  text=text.toUpperCase();
- }else if(type==="lower"){
-  text=text.toLowerCase();
- }else if(type==="title"){
-  text=text.toLowerCase().replace(/\b\p{L}/gu,char=>char.toUpperCase());
- }else if(type==="sentence"){
-  text=text.toLowerCase().replace(/(^\s*|[.!?]\s+)(\p{L})/gu,(match,prefix,char)=>prefix+char.toUpperCase());
- }else if(type==="alternating"){
-  let index=0;
-  text=Array.from(text).map(char=>{
-   if(/\p{L}/u.test(char)){
-    const converted=index%2===0?char.toLowerCase():char.toUpperCase();
-    index++;
-    return converted;
-   }
-   return char;
-  }).join("");
- }
+function convert(type) {
+  let text = textArea.value;
 
- textArea.value=text;
- message.textContent="Text converted successfully!";
+  if (type === "upper") {
+    text = text.toUpperCase();
+  } else if (type === "lower") {
+    text = text.toLowerCase();
+  } else if (type === "title") {
+    text = text.toLowerCase().replace(
+      /\b\p{L}/gu,
+      char => char.toUpperCase()
+    );
+  } else if (type === "sentence") {
+    text = text.toLowerCase().replace(
+      /(^\s*|[.!?]\s+)(\p{L})/gu,
+      (match, prefix, char) => prefix + char.toUpperCase()
+    );
+  } else if (type === "alternating") {
+    let index = 0;
+    text = Array.from(text).map(char => {
+      if (/\p{L}/u.test(char)) {
+        const result = index % 2 === 0
+          ? char.toLowerCase()
+          : char.toUpperCase();
+        index++;
+        return result;
+      }
+      return char;
+    }).join("");
+  }
+
+  textArea.value = text;
+  message.textContent = "Text converted successfully!";
 }
 
-async function copyText(){
- if(!textArea.value){
-  message.textContent="Please enter some text first.";
-  return;
- }
- try{
-  await navigator.clipboard.writeText(textArea.value);
-  message.textContent="Text copied to clipboard!";
- }catch(error){
-  textArea.select();
-  message.textContent="Select the text and copy it manually.";
- }
-}
+document.querySelectorAll("[data-action]").forEach(button => {
+  button.addEventListener("click", () => {
+    convert(button.dataset.action);
+  });
+});
+
+document.getElementById("copyButton").addEventListener("click", async () => {
+  if (!textArea.value) {
+    message.textContent = "Please enter some text first.";
+    return;
+  }
+
+  try {
+    if (!navigator.clipboard || !window.isSecureContext) {
+      throw new Error("Clipboard unavailable");
+    }
+
+    await navigator.clipboard.writeText(textArea.value);
+    message.textContent = "Text copied to clipboard!";
+  } catch (error) {
+    textArea.focus();
+    textArea.select();
+    message.textContent = "Copy unavailable. Select and copy the text manually.";
+  }
+});
 </script>
 </body>
 </html>
